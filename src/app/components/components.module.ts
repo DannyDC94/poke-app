@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { HeaderComponent } from  './header/header.component'
+import { HeaderComponent } from  './header/header.component';
+import { LoadImageComponent } from './load-image/load-image.component';
+import { LoadingComponent } from './loading/loading.component'
 
 @NgModule({
-  declarations: [HeaderComponent],
-  imports: [],
-  exports: [HeaderComponent]
+  declarations: [HeaderComponent, LoadImageComponent, LoadingComponent],
+  exports: [HeaderComponent, LoadImageComponent, LoadingComponent]
 })
-export class CommonModule { }
+export class ComponentsModule { }

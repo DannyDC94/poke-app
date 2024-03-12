@@ -1,0 +1,33 @@
+<app-header></app-header>
+<main class="container">
+  <div class="col-6">
+    <h2 class="title">¡Hola! Configuremos tu perfil</h2>
+    <label class="sub-title">Queremos conocerte mejor.</label>
+    <app-load-image class="content-load"></app-load-image>
+  </div>
+  <div class="col-6 move-col">
+    <h2 class="title">Tu información</h2>
+    <label class="sub-title">Completa la siguiente información para completar tu perfil</label>
+    <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <input class="input-group__input" type="text" placeholder="&nbsp;" formControlName="name" id="name" required />
+        <label class="input-group__label" for="name">Nombre*</label>
+      </div>
+      <div class="input-group">
+        <input class="input-group__input" type="text" formControlName="hobby" placeholder="&nbsp;" id="hobby" required />
+        <label class="input-group__label" for="hobby">Pasatiempo favorito</label>
+      </div>
+      <div class="input-group">
+        <input class="input-group__input" type="date" formControlName="birthday" placeholder="&nbsp;" id="birthday" required />
+        <label class="input-group__label" for="birthday">Cumpleaños*</label>
+      </div>
+      <div class="input-group">
+        <input class="input-group__input" type="text" formControlName="document" placeholder="&nbsp;" id="document" required />
+        <label class="input-group__label" for="document">Documento*</label>
+      </div>
+      <div class="container-button">
+        <button type="submit" [disabled]="!formGroup?.valid">Continuar</button>
+      </div>
+    </form>
+  </div>
+</main>

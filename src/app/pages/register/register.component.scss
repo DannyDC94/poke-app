@@ -1,0 +1,192 @@
+.container {
+  display: flex;
+}
+
+.col-6 {
+  flex: 1;
+  margin: 0 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.move-col {
+  margin: 0 15% 0 5% !important;
+}
+
+.title {
+  color: #185A7D;
+  font-size: 2.2rem;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.sub-title {
+  color: #868686;
+  margin-bottom: 6%;
+}
+
+.content-load {
+  display: flex;
+  justify-content: center;
+}
+
+// Color
+$gray: #999999;
+$dark-gray: #333333;
+$blue: #0086e4;
+
+$primary-color: $blue;
+$border-color: #dddddd;
+
+// Font
+$primary-font: 'Poppins', sans-serif;
+
+// Typography
+$body-font-family: $primary-font;
+$body-font-size: 14px;
+$body-color: $dark-gray;
+
+// Input
+$input-height: 50px;
+
+// Button
+$button-height: $input-height;
+
+input[type="checkbox"] {
+  margin: 0;
+  padding: 0;
+  height: 17px;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: rgb(150,0,150);
+  background: linear-gradient(225deg, rgba(150,0,150,1) 0%, rgba(107,36,205,1) 50%, rgba(0,104,255,1) 100%);
+}
+
+
+// Util
+// You can create a different file to store all utilities classes
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-align-center {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+button {
+  cursor: pointer;
+  background-color: #01426A;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  width: 13rem;
+  height: $button-height;
+  transition: 300ms background-color ease-in-out;
+  &:hover {
+    background-color: lighten(#01426A, 10%);
+  }
+}
+
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+  &__label {
+    display: block;
+    position: absolute;
+    top: 0;
+    // to keep the position center
+    line-height: $input-height;
+    color: #454545;
+    left: 5px;
+    padding: 0 5px;
+    transition: line-height 200ms ease-in-out,
+    font-size 200ms ease-in-out,
+    top 200ms ease-in-out;
+    // firefox fix
+    pointer-events: none;
+  }
+  &__input {
+    width: 100%;
+    height: $input-height;
+    border: 1px solid #01426A;
+    border-radius: 10px;
+    padding: 0 1rem;
+    // there must a required prop in input
+    // &:valid,
+    // need to add placeholder
+    &:not(:placeholder-shown),
+    &:focus {
+      + label {
+        background-color: white;
+        line-height: 10px;
+        opacity: 1;
+        font-size: 10px;
+        top: -5px;
+      }
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid #01426A;
+      + label {
+        color: #01426A;
+      }
+    }
+  }
+}
+
+.tabs {
+  $parent: &;
+  display: flex;
+  flex-flow: row wrap;
+  &__text {
+    flex: 1;
+    margin: 0;
+    cursor: pointer;
+    padding: 20px 30px;
+    font-size: 1.2em;
+    opacity: 0.5;
+    background-color: #eeeeee;
+    border-top: 3px solid #eeeeee;
+    transition: border-top 300ms ease-out;
+    transform-origin: top;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+  }
+  &__content {
+    display: none;
+    flex: 1 1 100%;
+    order: 99;
+    padding: 40px 30px 30px 30px;
+  }
+  &__button {
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    position: absolute;
+  }
+}
+
+button:disabled {
+  background-color: #E6E6E6;
+  color: #868686;
+}
+
+.container-button {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+  width: 105%;
+}
+
+
