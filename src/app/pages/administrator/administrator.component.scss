@@ -3,7 +3,7 @@
 }
 
 .container-data {
-  margin: 12rem 15rem 0 0rem;
+  margin: 8rem 10rem 0 0;
 }
 
 .title {
@@ -25,4 +25,18 @@
 
 .m-left {
   margin-left: 20%;
+}
+
+.img-pokemon {
+  height: 10rem;
+}
+
+.container-pokemon {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pokemon {
+  width: 30%; /* Ajusta el ancho de cada elemento para dejar espacio entre ellos */
+  margin-bottom: 20px; /* Espacio entre las filas */
 }

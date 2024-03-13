@@ -13,12 +13,18 @@
       <input type="file" (change)="onFileChange($event)" />
     </div>
   </div>
-  {{isImageLoad}}
   <div *ngIf="isImageLoad" class="data-user">
     <div class="row">
-<!--      <div class=""-->
+      <div class="col-6 description">Pasatiempo:</div>
+      <div class="col-6 description"> {{user.hobby}}</div>
     </div>
-    <div class="row"></div>
-    <div class="row"></div>
+    <div class="row">
+      <div class="col-6 description">Edad:</div>
+      <div class="col-6 description">{{user.birthday}}</div>
+    </div>
+    <div class="row">
+      <div class="col-6 description">DUI:</div>
+      <div class="col-6 description">{{user.document}}</div>
+    </div>
   </div>
 </div>

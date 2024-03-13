@@ -1,6 +1,6 @@
 <app-header></app-header>
-<!--<app-loading></app-loading>-->
-<main class="row">
+<app-loading *ngIf="!loadData"></app-loading>
+<main class="row" *ngIf="loadData">
   <div class="col-6">
     <div class="container-info ">
       <h2 class="title m-left">¡Ya casi términamos!</h2>
@@ -9,8 +9,17 @@
     </div>
   </div>
   <div class="col-6">
-    <div></div>
-    <h2 class="title">Tu información</h2>
-    <label class="sub-title">Completa la siguiente información para completar tu perfil</label>
+    <div class="container-data">
+      <h2 class="title">Pokémon</h2>
+      <label class="sub-title">Selecciona 3 Pokémon para que sean parte de tu equipo</label>
+      <br>
+      <input type="text" [formControl]="searchControl" placeholder="Buscar Pokémon">
+      <div class="container-pokemon">
+        <div *ngFor="let pokemon of filteredPokemons" class="pokemon">
+          <img (click)="getPokemon(pokemon)" class="img-pokemon" [src]="pokemon['sprites']['other']['home']['front_default']" alt="pokemon" >
+          <label style="text-align: center"> {{ pokemon['name'] }}</label>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
