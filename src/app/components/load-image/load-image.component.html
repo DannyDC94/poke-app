@@ -1,5 +1,5 @@
 <div class="container-image">
-  <h3 class="title">Imágen perfil</h3>
+  <h3 class="title">{{isImageLoad ? user.name : 'Imágen perfil'}}</h3>
   <div class="container">
     <div class="circle-white"></div>
     <div class="circle-gray" [hidden]="imageUrl"></div>
@@ -7,10 +7,18 @@
       <img [src]="imageUrl" alt="Imagen" class="circle-image"/>
     </div>
   </div>
-  <div class="container-load">
+  <div *ngIf="!isImageLoad" class="container-load">
     <div class="input-file">
       <span>Adjunta una foto</span>
       <input type="file" (change)="onFileChange($event)" />
     </div>
+  </div>
+  {{isImageLoad}}
+  <div *ngIf="isImageLoad" class="data-user">
+    <div class="row">
+<!--      <div class=""-->
+    </div>
+    <div class="row"></div>
+    <div class="row"></div>
   </div>
 </div>
