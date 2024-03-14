@@ -1,5 +1,8 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
+// Button
+$button-height: 50px;
+
 @font-face {
   font-family: 'Poppins';
   src: url('./assets/fonts/Poppins/Poppins-Regular.ttf');
@@ -24,4 +27,25 @@ body {
 main {
   flex: 1;
   height: 100%;
+}
+
+button {
+  cursor: pointer;
+  background-color: #01426A;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  width: 13rem;
+  height: $button-height;
+  transition: 300ms background-color ease-in-out;
+  &:hover {
+    background-color: lighten(#01426A, 10%);
+  }
+}
+
+button:disabled {
+  background-color: #E6E6E6;
+  color: #868686;
 }

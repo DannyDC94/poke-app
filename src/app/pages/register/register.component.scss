@@ -46,9 +46,6 @@ $body-color: $dark-gray;
 // Input
 $input-height: 50px;
 
-// Button
-$button-height: $input-height;
-
 input[type="checkbox"] {
   margin: 0;
   padding: 0;
@@ -75,22 +72,6 @@ input[type="checkbox"] {
   display: flex;
   justify-content: center;
   gap: 5px;
-}
-
-button {
-  cursor: pointer;
-  background-color: #01426A;
-  color: white;
-  border: none;
-  font-weight: bold;
-  border-radius: 6px;
-  letter-spacing: 1px;
-  width: 13rem;
-  height: $button-height;
-  transition: 300ms background-color ease-in-out;
-  &:hover {
-    background-color: lighten(#01426A, 10%);
-  }
 }
 
 .input-group {
@@ -171,11 +152,6 @@ button {
     margin: 0;
     position: absolute;
   }
-}
-
-button:disabled {
-  background-color: #E6E6E6;
-  color: #868686;
 }
 
 .container-button {

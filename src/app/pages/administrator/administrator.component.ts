@@ -41,15 +41,26 @@ export class AdministratorComponent implements OnInit {
     });
   }
 
-  getPokemon(pokemon: any) {
-    console.log(pokemon);
-    this.selectedPokemons.push(pokemon);
-    console.log(this.selectedPokemons);
+  getListPokemon(pokemon: any): void {
+    const index = this.selectedPokemons.findIndex(p => p.id === pokemon.id);
+    if (index !== -1) {
+      this.selectedPokemons.splice(index, 1);
+      pokemon.selected = false;
+    } else {
+      if (this.selectedPokemons.length >= 3) return;
+      this.selectedPokemons.push(pokemon);
+      pokemon.selected = true;
+    }
+  }
+
+  isSelected(pokemon: any): boolean {
+    return this.selectedPokemons.some(p => p.id === pokemon.id);
   }
 
   filterPokemons(searchTerm: string): void {
     this.filteredPokemons = this.pokemonData.filter(pokemon =>
-      pokemon['name'].toLowerCase().includes(searchTerm.toLowerCase())
+      pokemon['name'].toLowerCase().includes(searchTerm.toLowerCase()) ||
+      pokemon['id'].toString() === searchTerm
     ).slice(0, 9);
   }
 

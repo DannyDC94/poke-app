@@ -13,12 +13,21 @@
       <h2 class="title">Pokémon</h2>
       <label class="sub-title">Selecciona 3 Pokémon para que sean parte de tu equipo</label>
       <br>
-      <input type="text" [formControl]="searchControl" placeholder="Buscar Pokémon">
+      <input class="input-search" type="text" [formControl]="searchControl" placeholder="Buscar por índice, nombre...">
       <div class="container-pokemon">
-        <div *ngFor="let pokemon of filteredPokemons" class="pokemon">
-          <img (click)="getPokemon(pokemon)" class="img-pokemon" [src]="pokemon['sprites']['other']['home']['front_default']" alt="pokemon" >
-          <label style="text-align: center"> {{ pokemon['name'] }}</label>
+        <div *ngFor="let pokemon of filteredPokemons" class="pokemon" (click)="getListPokemon(pokemon)">
+          <img class="img-pokemon" [src]="pokemon['sprites']['other']['home']['front_default']" alt="pokemon" >
+          <div class="gray-background" [class.selected]="isSelected(pokemon)">
+            <div class="labelPokemon">
+              <div class="textPokemon">#{{pokemon['id']}}  {{ pokemon['name'] }}</div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 5rem">
+      <div class="container-button">
+        <button type="submit" [disabled]="selectedPokemons.length !== 3">Continuar</button>
       </div>
     </div>
   </div>
