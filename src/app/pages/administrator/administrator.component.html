@@ -8,7 +8,7 @@
       <app-load-image [isImageLoad]="true" class="content-load"></app-load-image>
     </div>
   </div>
-  <div class="col-6">
+  <div class="col-6" [hidden]="loadDetailData">
     <div class="container-data">
       <h2 class="title">Pokémon</h2>
       <label class="sub-title">Selecciona 3 Pokémon para que sean parte de tu equipo</label>
@@ -27,7 +27,44 @@
     </div>
     <div class="row" style="margin-top: 5rem">
       <div class="container-button">
-        <button type="submit" [disabled]="selectedPokemons.length !== 3">Continuar</button>
+        <button type="submit" [disabled]="selectedPokemons.length !== 3" (click)="sendPokemons()">Continuar</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-6" *ngIf="loadDetailData">
+    <div class="container-data">
+      <h2 class="title">Mis Pokémon</h2>
+      <br>
+      <div class="container-list">
+        <div *ngFor="let pokemon of selectedPokemons">
+          <div class="row container-detail">
+            <div class="col-4 img-detail">
+              <img class="img-pokemon" [src]="pokemon['sprites']['other']['home']['front_default']" alt="pokemon" >
+              <label>{{ pokemon['name'] }}</label>
+              {{ pokemon['types']?.[0]?.['type']?.['name'] | translation: TYPES_POKEMON: 'Otros' }}
+            </div>
+            <div class="col-8" style="display: grid; align-items: center;">
+              <div class="row" *ngFor="let stats of pokemon['stats']">
+                <div class="col-6">
+                  {{stats['stat']['name'] | translation: TYPES_HABILITIES}}
+                </div>
+                <div class="col-6">
+                  <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar"
+                         [ngClass]="{
+                                      'bg-danger': pokemon['types']?.[0]?.['type']?.['name'] === 'fire',
+                                      'bg-info': pokemon['types']?.[0]?.['type']?.['name'] === 'water',
+                                      'bg-success': pokemon['types']?.[0]?.['type']?.['name'] === 'grass',
+                                      'bg-warning': pokemon['types']?.[0]?.['type']?.['name'] === 'electric'
+                                    }"
+                         [ngStyle]="{ 'width': stats.base_stat + '%' }"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

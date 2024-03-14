@@ -8,17 +8,48 @@ import {debounceTime, distinctUntilChanged} from "rxjs/operators";
   templateUrl: './administrator.component.html',
   styleUrls: ['./administrator.component.scss']
 })
+
 export class AdministratorComponent implements OnInit {
   loadData = false;
+  loadDetailData = false;
   pokemonData: any[] = [];
   filteredPokemons: any[]  = [];
   selectedPokemons: any[]  = [];
   searchControl = new FormControl('');
 
+  TYPES_POKEMON = {
+    'grass': 'Planta',
+    'fire': 'Fuego',
+    'water': 'Agua',
+    'electric': 'Eléctrico',
+    'ice': 'Hielo',
+    'flying': 'Volador',
+    'rock': 'Roca',
+    'ground': 'Tierra',
+    'bug': 'Bicho',
+    'poison': 'Veneno',
+    'fighting': 'Lucha',
+    'psychic': 'Psíquico',
+    'dark': 'Oscuridad',
+    'steel': 'Acero',
+    'fairy': 'Hada',
+    'dragon': 'Drágon',
+  };
+
+  TYPES_HABILITIES = {
+    'hp': 'HP',
+    'attack': 'Ataque',
+    'defense': 'Defensa',
+    'special-attack': 'Ataque Especial',
+    'special-defense': 'Defensa Especial',
+    'speed': 'Velocidad'
+  };
+
   constructor(private svcPokemon: PokemonService) { }
 
   ngOnInit(): void {
     this.loadData = false;
+    this.loadDetailData = false;
     this.svcPokemon.getPokemons().subscribe({
       next: pokemonData => {
         pokemonData.forEach((pokemonResponse) => {
@@ -62,6 +93,11 @@ export class AdministratorComponent implements OnInit {
       pokemon['name'].toLowerCase().includes(searchTerm.toLowerCase()) ||
       pokemon['id'].toString() === searchTerm
     ).slice(0, 9);
+  }
+
+  sendPokemons() {
+    this.loadDetailData = true;
+    console.log('send');
   }
 
 }
