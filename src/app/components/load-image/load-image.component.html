@@ -8,9 +8,22 @@
     </div>
   </div>
   <div *ngIf="!isImageLoad" class="container-load">
-    <div class="input-file">
-      <span>Adjunta una foto</span>
-      <input type="file" (change)="onFileChange($event)" />
+    <div [hidden]="imageUrl" class="row input-file">
+      <div class="col-8 label-load">
+        <span>Adjunta una foto</span>
+      </div>
+      <div class="col-4 img-file">
+        <input type="file" (change)="onFileChange($event)" />
+        <img class="load-img" src="assets/icons/cloud_upload.svg"/>
+      </div>
+    </div>
+    <div [hidden]="!imageUrl" class="row input-file">
+      <div class="col-8 label-load">
+        <span>{{nameImage}}</span>
+      </div>
+      <div class="col-4 img-file">
+        <img class="load-img delete" (click)="deleteImage()" src="assets/icons/trash.svg"/>
+      </div>
     </div>
   </div>
   <div *ngIf="isImageLoad" class="data-user">

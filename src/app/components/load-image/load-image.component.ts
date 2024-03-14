@@ -9,6 +9,7 @@ export class LoadImageComponent implements OnInit {
   @Input() isImageLoad: boolean = false;
   @Output() sendImage = new EventEmitter<any>();
   imageUrl: string = '';
+  nameImage: string = '';
   user: any;
   constructor() { }
 
@@ -24,12 +25,18 @@ export class LoadImageComponent implements OnInit {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
+      this.nameImage = file.name;
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.imageUrl = reader.result as string;
         this.sendImage.emit(this.imageUrl);
       };
     }
+  }
+
+  deleteImage() {
+    this.nameImage = '';
+    this.imageUrl = '';
   }
 
 }

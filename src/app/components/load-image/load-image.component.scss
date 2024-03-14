@@ -89,10 +89,24 @@ img {
   border-radius: 10px;
 }
 
+.label-load {
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
 .input-file {
-  width: 100%;
   height: 100%;
-  position: relative;
+}
+
+.input-file img {
+  height: 30%;
+  border-radius: 0;
+}
+
+.input-file .delete {
+  height: 40%;
+  border-radius: 0;
 }
 
 .input-file input {
@@ -104,14 +118,21 @@ img {
 }
 
 .input-file span {
-  position: absolute;
-  top: 50%;
-  left: 25%;
-  transform: translate(-50%, -50%);
   color: #2C85BC;
+  margin-left: 1rem;
 }
 
 .data-user {
   margin: 1rem 2rem 0;
+}
+
+.img-file {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.load-img {
+  margin-right: 1rem;
 }
 
