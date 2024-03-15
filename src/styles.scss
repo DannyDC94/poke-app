@@ -72,3 +72,19 @@ button:disabled {
 .bold {
   font-family: 'Poppins-Bold';
 }
+
+.progress {
+  height: 1.2rem;
+  border-color: white;
+  border-style: ridge;
+  border-width: 0.3rem;
+  border-radius: 0.8rem;
+}
+
+.bg-success {
+  background-color: #7ED876 !important;
+}
+
+.bg-electric {
+  background-color: #ffdc34 !important;
+}

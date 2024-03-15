@@ -2,14 +2,26 @@ import { NgModule } from '@angular/core';
 import { HeaderComponent } from  './header/header.component';
 import { LoadImageComponent } from './load-image/load-image.component';
 import { LoadingComponent } from './loading/loading.component'
-import {CommonModule} from "@angular/common";
+import { CommonModule } from "@angular/common";
 import { DetailPokemonComponent } from './detail-pokemon/detail-pokemon.component';
+import { TranslationPipe } from "../pipes/translation.pipe";
 
 @NgModule({
-    declarations: [HeaderComponent, LoadImageComponent, LoadingComponent, DetailPokemonComponent],
-    imports: [
-        CommonModule
+    declarations: [
+      HeaderComponent,
+      LoadImageComponent,
+      LoadingComponent,
+      DetailPokemonComponent,
+      TranslationPipe
     ],
-    exports: [HeaderComponent, LoadImageComponent, LoadingComponent]
+    imports: [
+      CommonModule
+    ],
+    exports: [
+      HeaderComponent,
+      LoadImageComponent,
+      LoadingComponent,
+      DetailPokemonComponent
+    ]
 })
 export class ComponentsModule { }

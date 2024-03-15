@@ -8,13 +8,10 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 
 import { PokemonService } from '../../services/pokemon.service';
-import {TranslationPipe} from "../../pipes/translation.pipe";
-
 
 @NgModule({
   declarations: [
-    AdministratorComponent,
-    TranslationPipe
+    AdministratorComponent
   ],
   imports: [
     CommonModule,

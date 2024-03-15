@@ -1,6 +1,6 @@
 .container-image {
   background-color: #00693C;
-  height: 37rem;
+  height: 38em;
   width: 24rem;
   border-radius: 3rem;
   display: flex;
@@ -10,7 +10,7 @@
 
 .title {
   color: #FFFFFF;
-  margin: 3rem 0 2rem;
+  margin: 3rem 0 1rem;
   font-size: 1.87rem;
   font-weight: 400;
 }
@@ -127,7 +127,7 @@ img {
 }
 
 .data-user {
-  margin: 2rem 2rem 0;
+  margin: 0.5rem 1.5rem 0;
 }
 
 .img-file {
@@ -148,5 +148,17 @@ img {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
+}
+
+.img-star {
+  position: absolute;
+  bottom: 0;
 }
 

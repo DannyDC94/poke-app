@@ -1,6 +1,14 @@
 <div class="container-image">
   <h3 *ngIf="!isRegisted" class="title">Imágen perfil'</h3>
-  <h3 *ngIf="isRegisted" style="font-size: 2.1rem" class="title bold">{{ user.name }}</h3>
+  <h3 *ngIf="isRegisted && !isDetail" style="font-size: 2.1rem" class="title bold">{{ user.name }}</h3>
+  <div *ngIf="isRegisted && isDetail" class="row">
+    <div class="col-8">
+      <h3 style="font-size: 1.5rem" class="title">Entrenador</h3>
+    </div>
+    <div class="col-4 center-container">
+      <img class="img-star" src="assets/imgs/medal.svg" alt="star"/>
+    </div>
+  </div>
   <div class="container">
     <div class="circle-white"></div>
     <div class="circle-gray" [hidden]="imageUrl">
@@ -40,7 +48,7 @@
     </div>
     <div class="row" *ngIf="user.age >= 18">
       <div class="col-6 description bold">DUI:</div>
-      <div class="col-6 description">{{user.document}}</div>
+      <div class="col-6 description">{{formatId(user.document)}}</div>
     </div>
   </div>
 </div>

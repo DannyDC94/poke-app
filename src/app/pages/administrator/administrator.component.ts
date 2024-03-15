@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
-import {FormControl} from "@angular/forms";
-import {debounceTime, distinctUntilChanged} from "rxjs/operators";
+import { FormControl } from "@angular/forms";
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-administrator',
@@ -15,41 +16,20 @@ export class AdministratorComponent implements OnInit {
   pokemonData: any[] = [];
   filteredPokemons: any[]  = [];
   selectedPokemons: any[]  = [];
+  user: any;
   searchControl = new FormControl('');
 
-  TYPES_POKEMON = {
-    'grass': 'Planta',
-    'fire': 'Fuego',
-    'water': 'Agua',
-    'electric': 'Eléctrico',
-    'ice': 'Hielo',
-    'flying': 'Volador',
-    'rock': 'Roca',
-    'ground': 'Tierra',
-    'bug': 'Bicho',
-    'poison': 'Veneno',
-    'fighting': 'Lucha',
-    'psychic': 'Psíquico',
-    'dark': 'Oscuridad',
-    'steel': 'Acero',
-    'fairy': 'Hada',
-    'dragon': 'Drágon',
-  };
-
-  TYPES_HABILITIES = {
-    'hp': 'HP',
-    'attack': 'Ataque',
-    'defense': 'Defensa',
-    'special-attack': 'Ataque Especial',
-    'special-defense': 'Defensa Especial',
-    'speed': 'Velocidad'
-  };
-
-  constructor(private svcPokemon: PokemonService) { }
+  constructor(
+    private svcPokemon: PokemonService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loadData = false;
     this.loadDetailData = false;
+    const userInfo = localStorage.getItem('userInfo');
+    if (userInfo)
+      this.user = JSON.parse(userInfo);
     this.svcPokemon.getPokemons().subscribe({
       next: pokemonData => {
         pokemonData.forEach((pokemonResponse) => {
@@ -97,6 +77,15 @@ export class AdministratorComponent implements OnInit {
 
   sendPokemons() {
     this.loadDetailData = true;
+  }
+
+  backButton() {
+    if (this.loadDetailData) {
+      this.loadDetailData = false;
+    } else {
+      localStorage.removeItem('userInfo');
+      this.router.navigate(['/register'], { replaceUrl: true });
+    }
   }
 
 }

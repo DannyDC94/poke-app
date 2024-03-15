@@ -2,22 +2,32 @@
 <app-loading *ngIf="!loadData"></app-loading>
 <main class="row" *ngIf="loadData">
   <div class="col-6">
-    <div class="container-info ">
-      <div class="row">
-        <div class="col-1 row-back">
-          <img src="assets/icons/arrow_back.svg" alt="row-back"/>
+    <div class="container-info">
+      <div class="row" style="justify-content: center">
+        <div *ngIf="!loadDetailData" class="row">
+          <div class="col-1 row-back" (click)="backButton()">
+            <img src="assets/icons/arrow_back.svg" alt="row-back"/>
+          </div>
+          <div class="col-11">
+            <h2 class="title semi-bold">¡Ya casi términamos!</h2>
+          </div>
         </div>
-        <div class="col-11">
-          <h2 class="title semi-bold">¡Ya casi términamos!</h2>
+        <div *ngIf="!loadDetailData"  class="row" style="margin-top: 0.5rem">
+          <div class="col-1"></div>
+          <div class="col-11">
+            <label class="sub-title" style="width: 120%;">Revisa la información, y completa lo solicitado.</label>
+          </div>
         </div>
+        <div *ngIf="loadDetailData" class="row">
+          <div class="col-8">
+            <h2 class="title bold hello">¡Hola {{user.name}}!</h2>
+          </div>
+          <div class="col-4">
+            <img (click)="backButton()" style="margin-top: 0.4rem;" src="assets/imgs/edit-profile.svg" alt="profile">
+          </div>
+        </div>
+        <app-load-image [isRegisted]="true" [isDetail]="loadDetailData" class="content-load"></app-load-image>
       </div>
-      <div class="row" style="margin-top: 0.5rem">
-        <div class="col-1"></div>
-        <div class="col-11">
-          <label class="sub-title">Revisa la información, y completa lo solicitado.</label>
-        </div>
-      </div>
-      <app-load-image [isRegisted]="true" class="content-load"></app-load-image>
     </div>
   </div>
   <div class="col-6" [hidden]="loadDetailData">
@@ -48,37 +58,18 @@
   </div>
   <div class="col-6" *ngIf="loadDetailData">
     <div class="container-data">
-      <h2 class="title">Mis Pokémon</h2>
+      <div class="row">
+        <div class="col-8">
+          <h2 class="title">Mis Pokémon</h2>
+        </div>
+        <div class="col-4 title-edit">
+          <img (click)="backButton()" src="assets/imgs/edit.svg" alt="edit">
+        </div>
+      </div>
       <br>
       <div class="container-list">
         <div *ngFor="let pokemon of selectedPokemons">
-          <div class="row container-detail">
-            <div class="col-4 img-detail">
-              <img class="img-pokemon" [src]="pokemon['sprites']['other']['home']['front_default']" alt="pokemon" >
-              <label class="bold" style="font-size: 1.87rem">{{ pokemon['name'] }}</label>
-              {{ pokemon['types']?.[0]?.['type']?.['name'] | translation: TYPES_POKEMON: 'Otros' }}
-            </div>
-            <div class="col-8" style="display: grid; align-items: center;">
-              <div class="row" *ngFor="let stats of pokemon['stats']">
-                <div class="col-6">
-                  {{stats['stat']['name'] | translation: TYPES_HABILITIES}}
-                </div>
-                <div class="col-6">
-                  <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar"
-                         [ngClass]="{
-                                      'bg-danger': pokemon['types']?.[0]?.['type']?.['name'] === 'fire',
-                                      'bg-info': pokemon['types']?.[0]?.['type']?.['name'] === 'water',
-                                      'bg-success': pokemon['types']?.[0]?.['type']?.['name'] === 'grass',
-                                      'bg-warning': pokemon['types']?.[0]?.['type']?.['name'] === 'electric'
-                                    }"
-                         [ngStyle]="{ 'width': stats.base_stat + '%' }"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <app-detail-pokemon [pokemon]="pokemon"></app-detail-pokemon>
         </div>
       </div>
     </div>

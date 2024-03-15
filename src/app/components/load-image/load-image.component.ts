@@ -7,9 +7,11 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class LoadImageComponent implements OnInit {
   @Input() isRegisted: boolean = false;
+  @Input() isDetail: boolean = false;
   @Output() sendImage = new EventEmitter<any>();
   imageUrl: string = '';
   nameImage: string = '';
+  formatDNI: string = '';
   user: any;
   constructor() { }
 
@@ -32,6 +34,11 @@ export class LoadImageComponent implements OnInit {
         this.sendImage.emit(this.imageUrl);
       };
     }
+  }
+
+  formatId(number: string) {
+    if (number.length < 9) return  number;
+    else return  number.slice(0, 8) + '-' + number.slice(8);
   }
 
   deleteImage() {

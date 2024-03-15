@@ -1,0 +1,41 @@
+.container-detail {
+  background-color: #F2F2F2;
+  margin: 2rem 0;
+  border-radius: 1rem;
+  height: 22rem;
+  padding: 2rem 1rem;
+}
+
+.img-detail {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.img-pokemon {
+  height: 13rem;
+  z-index: 1;
+  position: relative;
+}
+
+.habilities {
+  display: grid;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.text-habilities {
+  font-size: 1.25rem;
+  color: #4B4B4B;
+}
+
+.left {
+  text-align: left;
+  margin-left: 10%;
+}
+
+.label-name {
+  font-size: 1.87rem;
+  margin-bottom: 0;
+}
