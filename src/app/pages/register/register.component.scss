@@ -161,4 +161,10 @@ input[type="checkbox"] {
   width: 105%;
 }
 
+@media (max-width: 992px) {
+  .container-form {
+    margin: 2rem 4rem 0;
+  }
+}
+
 

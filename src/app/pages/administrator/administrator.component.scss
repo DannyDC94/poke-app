@@ -1,5 +1,5 @@
 .container-info {
-  margin: 5rem 6rem;
+  margin-top: 5rem;
 }
 
 .container-data {
@@ -124,4 +124,18 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 0.4rem;
+}
+
+.center-col {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 992px) {
+  .container-data {
+    margin: 2rem 4rem 0;
+  }
+  .container-button {
+    width: 100%;
+  }
 }
