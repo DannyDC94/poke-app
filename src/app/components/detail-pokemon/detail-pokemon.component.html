@@ -1,12 +1,12 @@
 <div class="row container-detail">
   <div class="col-4 img-detail">
     <img class="img-pokemon" [src]="pokemon['sprites']['other']['home']['front_default']" alt="pokemon" >
-    <label class="bold left label-name">{{ pokemon['name'] | titlecase }}</label>
+    <label class="bold left label-name one-line-text">{{ pokemon['name'] | titlecase }}</label>
     <div class="left" style="font-size: 1.12rem">{{ pokemon['types']?.[0]?.['type']?.['name'] | translation: TYPES_POKEMON: 'Otros' }}</div>
   </div>
   <div class="col-8 habilities">
     <div class="row" *ngFor="let stats of pokemon['stats']">
-      <div class="col-6 text-habilities">
+      <div class="col-6 text-habilities one-line-text">
         {{stats['stat']['name'] | translation: TYPES_HABILITIES}}
       </div>
       <div class="col-6">

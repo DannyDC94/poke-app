@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { FormControl } from "@angular/forms";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-administrator',
@@ -10,7 +11,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./administrator.component.scss']
 })
 
-export class AdministratorComponent implements OnInit {
+export class AdministratorComponent implements OnInit, OnDestroy {
   loadData = false;
   loadDetailData = false;
   pokemonData: any[] = [];
@@ -19,10 +20,14 @@ export class AdministratorComponent implements OnInit {
   user: any;
   searchControl = new FormControl('');
 
+  private pokemonSubscription: Subscription;
+
   constructor(
     private svcPokemon: PokemonService,
     private router: Router
-  ) { }
+  ) {
+    this.pokemonSubscription = new Subscription();
+  }
 
   ngOnInit(): void {
     this.loadData = false;
@@ -30,7 +35,7 @@ export class AdministratorComponent implements OnInit {
     const userInfo = localStorage.getItem('userInfo');
     if (userInfo)
       this.user = JSON.parse(userInfo);
-    this.svcPokemon.getPokemons().subscribe({
+    this.pokemonSubscription = this.svcPokemon.getPokemons().subscribe({
       next: pokemonData => {
         pokemonData.forEach((pokemonResponse) => {
           this.pokemonData = pokemonResponse;
@@ -85,6 +90,12 @@ export class AdministratorComponent implements OnInit {
     } else {
       localStorage.removeItem('userInfo');
       this.router.navigate(['/register'], { replaceUrl: true });
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.pokemonSubscription) {
+      this.pokemonSubscription.unsubscribe();
     }
   }
 
