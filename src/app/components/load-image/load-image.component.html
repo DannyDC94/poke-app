@@ -1,42 +1,45 @@
 <div class="container-image">
-  <h3 class="title">{{isImageLoad ? user.name : 'Imágen perfil'}}</h3>
+  <h3 *ngIf="!isRegisted" class="title">Imágen perfil'</h3>
+  <h3 *ngIf="isRegisted" style="font-size: 2.1rem" class="title bold">{{ user.name }}</h3>
   <div class="container">
     <div class="circle-white"></div>
-    <div class="circle-gray" [hidden]="imageUrl"></div>
+    <div class="circle-gray" [hidden]="imageUrl">
+      <img class="img-avatar" src="assets/icons/user.svg" alt="user"/>
+    </div>
     <div [hidden]="!imageUrl">
       <img [src]="imageUrl" alt="Imagen" class="circle-image"/>
     </div>
   </div>
-  <div *ngIf="!isImageLoad" class="container-load">
+  <div *ngIf="!isRegisted" class="container-load">
     <div [hidden]="imageUrl" class="row input-file">
-      <div class="col-8 label-load">
+      <div class="col-10 label-load">
         <span>Adjunta una foto</span>
       </div>
-      <div class="col-4 img-file">
+      <div class="col-2 img-file">
         <input type="file" (change)="onFileChange($event)" />
         <img class="load-img" src="assets/icons/cloud_upload.svg"/>
       </div>
     </div>
     <div [hidden]="!imageUrl" class="row input-file">
-      <div class="col-8 label-load">
-        <span>{{nameImage}}</span>
+      <div class="col-10 label-load">
+        <span class="text-img">{{nameImage}}</span>
       </div>
-      <div class="col-4 img-file">
+      <div class="col-2 img-file">
         <img class="load-img delete" (click)="deleteImage()" src="assets/icons/trash.svg"/>
       </div>
     </div>
   </div>
-  <div *ngIf="isImageLoad" class="data-user">
+  <div *ngIf="isRegisted" class="data-user">
     <div class="row">
-      <div class="col-6 description">Pasatiempo:</div>
+      <div class="col-6 description bold">Pasatiempo:</div>
       <div class="col-6 description"> {{user.hobby}}</div>
     </div>
     <div class="row">
-      <div class="col-6 description">Edad:</div>
-      <div class="col-6 description">{{user.birthday}}</div>
+      <div class="col-6 description bold">Edad:</div>
+      <div class="col-6 description">{{user.age}} años</div>
     </div>
-    <div class="row">
-      <div class="col-6 description">DUI:</div>
+    <div class="row" *ngIf="user.age >= 18">
+      <div class="col-6 description bold">DUI:</div>
       <div class="col-6 description">{{user.document}}</div>
     </div>
   </div>

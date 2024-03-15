@@ -67,6 +67,9 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .circle-image {
@@ -93,6 +96,7 @@ img {
   text-align: left;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .input-file {
@@ -123,7 +127,7 @@ img {
 }
 
 .data-user {
-  margin: 1rem 2rem 0;
+  margin: 2rem 2rem 0;
 }
 
 .img-file {
@@ -134,5 +138,15 @@ img {
 
 .load-img {
   margin-right: 1rem;
+}
+
+.img-avatar {
+  height: 45%;
+}
+
+.text-img {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 

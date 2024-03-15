@@ -8,6 +8,16 @@ $button-height: 50px;
   src: url('./assets/fonts/Poppins/Poppins-Regular.ttf');
 }
 
+@font-face {
+  font-family: 'Poppins-SemiBold';
+  src: url('./assets/fonts/Poppins/Poppins-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins-Bold';
+  src: url('./assets/fonts/Poppins/Poppins-Bold.ttf');
+}
+
 * {
   font-family: 'Poppins';
 }
@@ -48,4 +58,17 @@ button {
 button:disabled {
   background-color: #E6E6E6;
   color: #868686;
+}
+
+.row-back {
+  display: flex;
+  padding-right: 0.6rem;
+}
+
+.semi-bold {
+  font-family: 'Poppins-SemiBold';
+}
+
+.bold {
+  font-family: 'Poppins-Bold';
 }

@@ -97,7 +97,6 @@ export class AdministratorComponent implements OnInit {
 
   sendPokemons() {
     this.loadDetailData = true;
-    console.log('send');
   }
 
 }

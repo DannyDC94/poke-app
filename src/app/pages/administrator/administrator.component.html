@@ -3,17 +3,32 @@
 <main class="row" *ngIf="loadData">
   <div class="col-6">
     <div class="container-info ">
-      <h2 class="title m-left">¡Ya casi términamos!</h2>
-      <label class="sub-title m-left">Revisa la información, y completa lo solicitado.</label>
-      <app-load-image [isImageLoad]="true" class="content-load"></app-load-image>
+      <div class="row">
+        <div class="col-1 row-back">
+          <img src="assets/icons/arrow_back.svg" alt="row-back"/>
+        </div>
+        <div class="col-11">
+          <h2 class="title semi-bold">¡Ya casi términamos!</h2>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 0.5rem">
+        <div class="col-1"></div>
+        <div class="col-11">
+          <label class="sub-title">Revisa la información, y completa lo solicitado.</label>
+        </div>
+      </div>
+      <app-load-image [isRegisted]="true" class="content-load"></app-load-image>
     </div>
   </div>
   <div class="col-6" [hidden]="loadDetailData">
     <div class="container-data">
       <h2 class="title">Pokémon</h2>
-      <label class="sub-title">Selecciona 3 Pokémon para que sean parte de tu equipo</label>
+      <label class="sub-title" style="margin-top: 0.8rem">Selecciona 3 Pokémon para que sean parte de tu equipo</label>
       <br>
-      <input class="input-search" type="text" [formControl]="searchControl" placeholder="Buscar por índice, nombre...">
+      <div class="custom-input">
+        <img src="assets/icons/search.svg" alt="Lupa" class="lupa-icon">
+        <input class="input-search" type="text" [formControl]="searchControl" placeholder="Buscar por índice, nombre...">
+      </div>
       <div class="container-pokemon">
         <div *ngFor="let pokemon of filteredPokemons" class="pokemon" (click)="getListPokemon(pokemon)">
           <img class="img-pokemon" [src]="pokemon['sprites']['other']['home']['front_default']" alt="pokemon" >
@@ -27,7 +42,7 @@
     </div>
     <div class="row" style="margin-top: 5rem">
       <div class="container-button">
-        <button type="submit" [disabled]="selectedPokemons.length !== 3" (click)="sendPokemons()">Continuar</button>
+        <button type="submit" [disabled]="selectedPokemons.length !== 3" (click)="sendPokemons()">Guardar</button>
       </div>
     </div>
   </div>
@@ -40,7 +55,7 @@
           <div class="row container-detail">
             <div class="col-4 img-detail">
               <img class="img-pokemon" [src]="pokemon['sprites']['other']['home']['front_default']" alt="pokemon" >
-              <label>{{ pokemon['name'] }}</label>
+              <label class="bold" style="font-size: 1.87rem">{{ pokemon['name'] }}</label>
               {{ pokemon['types']?.[0]?.['type']?.['name'] | translation: TYPES_POKEMON: 'Otros' }}
             </div>
             <div class="col-8" style="display: grid; align-items: center;">

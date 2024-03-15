@@ -6,7 +6,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./load-image.component.scss']
 })
 export class LoadImageComponent implements OnInit {
-  @Input() isImageLoad: boolean = false;
+  @Input() isRegisted: boolean = false;
   @Output() sendImage = new EventEmitter<any>();
   imageUrl: string = '';
   nameImage: string = '';
@@ -15,7 +15,7 @@ export class LoadImageComponent implements OnInit {
 
   ngOnInit(): void {
     const userInfo = localStorage.getItem('userInfo');
-    if (this.isImageLoad && userInfo) {
+    if (this.isRegisted && userInfo) {
       this.user = JSON.parse(userInfo);
       this.imageUrl = this.user.image;
     }

@@ -2,31 +2,43 @@
 <main class="row">
   <div class="col-6">
     <div class="container-info">
-      <h2 class="title m-left">¡Hola! Configuremos tu perfil</h2>
-      <label class="sub-title m-left">Queremos conocerte mejor.</label>
+      <div class="row">
+        <div class="col-1 row-back">
+          <img src="assets/icons/arrow_back.svg" alt="row-back"/>
+        </div>
+        <div class="col-11">
+          <h2 class="title semi-bold"><strong class="bold">¡Hola!</strong> Configuremos tu perfil</h2>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 0.5rem">
+        <div class="col-1"></div>
+        <div class="col-11">
+          <label class="sub-title">Queremos conocerte mejor.</label>
+        </div>
+      </div>
       <app-load-image (sendImage)="getImage($event)" class="content-load"></app-load-image>
     </div>
   </div>
   <div class="col-6">
     <div class="container-form">
       <h2 class="title">Tu información</h2>
-      <label class="sub-title">Completa la siguiente información para completar tu perfil</label>
+      <label class="sub-title" style="margin-top: 0.4rem ">Completa la siguiente información para completar tu perfil</label>
       <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
         <div class="input-group">
-          <input class="input-group__input" type="text" placeholder="&nbsp;" formControlName="name" id="name" required />
+          <input class="input-group__input" type="text" [maxLength]="50" placeholder="&nbsp;" formControlName="name" id="name" required />
           <label class="input-group__label" for="name">Nombre*</label>
         </div>
         <div class="input-group">
-          <input class="input-group__input" type="text" formControlName="hobby" placeholder="&nbsp;" id="hobby" required />
+          <input class="input-group__input" type="text" formControlName="hobby" placeholder="&nbsp;" id="hobby" />
           <label class="input-group__label" for="hobby">Pasatiempo favorito</label>
         </div>
         <div class="input-group">
-          <input class="input-group__input" type="date" formControlName="birthday" placeholder="&nbsp;" id="birthday" required />
+          <input class="input-group__input" type="date" formControlName="birthday" (change)="calculateAge()" placeholder="&nbsp;" id="birthday" required />
           <label class="input-group__label" for="birthday">Cumpleaños*</label>
         </div>
         <div class="input-group">
-          <input class="input-group__input" type="text" formControlName="document" placeholder="&nbsp;" id="document" required />
-          <label class="input-group__label" for="document">Documento*</label>
+          <input class="input-group__input" [maxLength]="9" [mask]="usedMask ?'99999999-9' : ''" type="text" formControlName="document" placeholder="&nbsp;" id="document" />
+          <label class="input-group__label" for="document"> {{usedMask ? 'Documento*' : 'Carnet de Minoridad'}} </label>
         </div>
         <div class="container-button">
           <button type="submit" [disabled]="!formGroup?.valid">Continuar</button>

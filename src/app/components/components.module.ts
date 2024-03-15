@@ -3,9 +3,10 @@ import { HeaderComponent } from  './header/header.component';
 import { LoadImageComponent } from './load-image/load-image.component';
 import { LoadingComponent } from './loading/loading.component'
 import {CommonModule} from "@angular/common";
+import { DetailPokemonComponent } from './detail-pokemon/detail-pokemon.component';
 
 @NgModule({
-    declarations: [HeaderComponent, LoadImageComponent, LoadingComponent],
+    declarations: [HeaderComponent, LoadImageComponent, LoadingComponent, DetailPokemonComponent],
     imports: [
         CommonModule
     ],
