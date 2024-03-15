@@ -6,6 +6,7 @@ import { RegisterComponent } from './register.component';
 import { ComponentsModule } from '../../components/components.module'
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NgxMaskModule } from 'ngx-mask';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { NgxMaskModule } from 'ngx-mask';
         ComponentsModule,
         FormsModule,
         ReactiveFormsModule,
+        NgSelectModule,
         NgxMaskModule.forRoot()
     ]
 })

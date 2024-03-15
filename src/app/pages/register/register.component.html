@@ -29,7 +29,7 @@
           <label class="input-group__label" for="name">Nombre*</label>
         </div>
         <div class="input-group">
-          <input class="input-group__input" type="text" formControlName="hobby" placeholder="&nbsp;" id="hobby" />
+          <ng-select class="input-group__input" formControlName="hobby" id="hobby" [items]="hobbies" bindLabel="nombre" bindValue="id" [searchable]="true" placeholder="&nbsp;"></ng-select>
           <label class="input-group__label" for="hobby">Pasatiempo favorito</label>
         </div>
         <div class="input-group">
